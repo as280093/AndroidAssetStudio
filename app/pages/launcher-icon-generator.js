@@ -162,7 +162,7 @@ export class LauncherIconGenerator extends BaseGenerator {
       this.zipper.add({
         name: (density == 'web')
             ? 'web_hi_res_512.png'
-            : `res/mipmap-${density}/${values.name}.png`,
+            : `mipmap-${density}/${values.name}.png`,
         canvas: ctx.canvas
       });
 
