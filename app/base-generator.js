@@ -21,7 +21,6 @@ import * as studio from './studio';
 const DENSITIES = new Set(['xxxhdpi', 'xxhdpi', 'xhdpi', 'hdpi', 'mdpi']);
 const REGENERATE_DEBOUNCE_TIME = 200;
 
-const DEFAULT_VISIBLE_SLOT = 'xxxhdpi';
 
 export class BaseGenerator {
   constructor() {
@@ -64,11 +63,11 @@ export class BaseGenerator {
   }
 
   setupOutputSlots() {
-    (this.outputSlots || this.densities).forEach(slot => {
+    this.densities.forEach(density => {
       this.createImageOutputSlot_({
-        container: (slot == DEFAULT_VISIBLE_SLOT) ? $('.outputs-main') : $('.outputs-additional'),
-        id: slot,
-        label: slot
+        container: (density == 'xxxhdpi') ? $('.outputs-main') : $('.outputs-additional'),
+        id: density,
+        label: density
       });
     });
   }
@@ -84,6 +83,7 @@ export class BaseGenerator {
           .addClass('outputs-image')
           .attr('data-id', `out-icon-${params.id}`));
 
+    // TODO: abstract away the 'hide grid for web' logic
     if (params.id != 'web' && this.gridOverlaySvg) {
       $('<div>')
           .addClass('outputs-image-overlay')

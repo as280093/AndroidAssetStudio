@@ -31,7 +31,7 @@ import * as studio from '../index';
 import {CLIPART_NAMES} from './image-field-clipart';
 
 
-const WEB_FONTS_API_KEY = 'AIzaSyAtSe8wlXPCUaLQ4LTyPKpbzBBPJAzEXmU';
+const WEB_FONTS_API_KEY = 'AIzaSyCzONJUtzxRRszF7MyNLE_qGE8fsmwaNRk';
 const WEB_FONTS_API_URL = `https://www.googleapis.com/webfonts/v1/webfonts?key=${WEB_FONTS_API_KEY}&fields=items(family)`;
 const WEB_FONTS_CACHE_TIME = 60 * 60 * 1000; // 1 hour
 

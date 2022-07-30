@@ -23,6 +23,15 @@
   }
 }
 
+.page-header {
+  position: relative;
+  padding: 12px 24px 12px 64px;
+  background-color: $colorPrimary;
+  box-shadow: material-shadow(4);
+  z-index: 3;
+  transform: translateZ(0);
+}
+
 .page-header-back-button {
   position: absolute;
   font-size: 24px;
