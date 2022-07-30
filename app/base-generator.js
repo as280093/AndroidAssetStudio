@@ -84,7 +84,7 @@ export class BaseGenerator {
           .addClass('outputs-image')
           .attr('data-id', `out-icon-${params.id}`));
 
-    if (this.gridOverlaySvg) {
+    if (params.id != 'web' && this.gridOverlaySvg) {
       $('<div>')
           .addClass('outputs-image-overlay')
           .html(this.gridOverlaySvg)
