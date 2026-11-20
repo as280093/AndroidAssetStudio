@@ -81,6 +81,10 @@ gulp.task('copy', () => {
       gulp.src([
             'app/favicon.ico',
             'app/sw.js',
+            'app/bg-color-suggester.js',
+            'app/image-url-picker.js',
+            'app/material-color-utilities.js',
+            'app/theme-manager.js',
           ], {dot: true, nodir: true,})
           .pipe(gulp.dest('dist')),
       gulp.src('older-version/**/*', {dot: true})
