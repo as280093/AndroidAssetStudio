@@ -4,7 +4,7 @@ import webpack from 'webpack';
 
 module.exports = {
   entry: {
-    app: './app/app.entry.js',
+    app: ['babel-polyfill', './app/app.entry.js'],
   },
   output: {
     filename: '[name].js',
