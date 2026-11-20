@@ -37,7 +37,6 @@ export class GenericIconGenerator extends BaseGenerator {
           helpText: 'Must be transparent',
           maxFinalSize: { w: 720, h: 720 }, // max render size, for SVGs
           defaultValueClipart: 'ac_unit',
-          dropTarget: document.body,
           onChange: (newValue, oldValue) => {
             if (nameField.getValue() == defaultNameForSourceValue_(oldValue)) {
               nameField.setValue(defaultNameForSourceValue_(newValue));

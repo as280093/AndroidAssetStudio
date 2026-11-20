@@ -24,6 +24,7 @@ const REGENERATE_DEBOUNCE_TIME = 200;
 
 export class BaseGenerator {
   constructor() {
+    window.assetStudioCurrentGenerator = this;
     this.regenerateDebounced_ = studio.Util.debounce(
         REGENERATE_DEBOUNCE_TIME,
         () => this.regenerate());

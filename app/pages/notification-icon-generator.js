@@ -43,7 +43,6 @@ export class NotificationIconGenerator extends BaseGenerator {
           helpText: 'Must be transparent',
           maxFinalSize: { w: 128, h: 128 },
           defaultValueClipart: 'ac_unit',
-          dropTarget: document.body,
           onChange: (newValue, oldValue) => {
             if (nameField.getValue() == defaultNameForSourceValue_(oldValue)) {
               nameField.setValue(defaultNameForSourceValue_(newValue));

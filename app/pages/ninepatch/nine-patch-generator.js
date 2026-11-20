@@ -80,8 +80,7 @@ export class NinePatchGenerator extends BaseGenerator {
           title: 'Source graphic',
           imageOnly: true,
           noTrimForm: true,
-          noPreview: true,
-          dropTarget: document.body
+          noPreview: true
         }),
         new studio.EnumField('sourceDensity', {
           title: 'Source density',

@@ -60,7 +60,6 @@ export class ActionBarIconGenerator extends BaseGenerator {
           maxFinalSize: { w: 128, h: 128 },
           clipartNoTrimPadding: true,
           defaultValueClipart: 'add_circle',
-          dropTarget: document.body,
           onChange: (newValue, oldValue) => {
             if (nameField.getValue() == defaultNameForSourceValue_(oldValue)) {
               nameField.setValue(defaultNameForSourceValue_(newValue));

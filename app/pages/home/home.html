@@ -53,6 +53,11 @@ generatorGroups:
 
 {% block body %}
 <div class="home-header">
+  <div class="home-header-theme-toggle-wrap">
+    <button type="button" class="icon-button theme-dark page-header-theme-toggle" title="Switch to dark theme" aria-label="Toggle dark mode">
+      <i class="material-icons">brightness_4</i>
+    </button>
+  </div>
   <div class="inner">
     <h1>Android Asset Studio</h1>
     <p class="subtitle">
@@ -81,7 +86,10 @@ generatorGroups:
 <div class="home-footer">
   <div class="inner">
     Created by <a href="https://twitter.com/romannurik">Roman Nurik</a>.
-    <a target="_blank" class="external-link" href="https://github.com/romannurik/AndroidAssetStudio">Source on GitHub</a>
+    <a target="_blank" class="external-link" href="https://github.com/as280093/AndroidAssetStudio">Source on GitHub</a>
+    <button type="button" class="icon-button page-header-theme-toggle" title="Switch to dark theme" aria-label="Toggle dark mode" style="margin-left: 16px; display: inline-flex; vertical-align: middle;">
+      <i class="material-icons">brightness_4</i>
+    </button>
   </div>
 </div>
 {% endblock %}

@@ -51,7 +51,6 @@ export class AppShortcutIconGenerator extends BaseGenerator {
           maxFinalSize: { w: 128, h: 128 },
           clipartNoTrimPadding: true,
           defaultValueClipart: 'search',
-          dropTarget: document.body,
           onChange: (newValue, oldValue) => {
             if (nameField.getValue() == defaultNameForSourceValue_(oldValue)) {
               nameField.setValue(defaultNameForSourceValue_(newValue));

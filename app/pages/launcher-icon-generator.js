@@ -75,8 +75,7 @@ export class LauncherIconGenerator extends BaseGenerator {
           maxFinalSize: { w: 720, h: 720 }, // max render size, for SVGs
           defaultValueTrim: 1,
           defaultValuePadding: .25,
-          defaultValueClipart: 'android',
-          dropTarget: document.body
+          defaultValueClipart: 'android'
         }),
         new studio.ColorField('foreColor', {
           newGroup: true,
@@ -203,8 +202,15 @@ export class LauncherIconGenerator extends BaseGenerator {
       // background layer
       draw: ctx => {
         ctx.scale(mult, mult);
-        values.backColor.setAlpha(1);
-        ctx.fillStyle = values.backColor.toRgbString();
+        if (window.assetStudioCustomGradient && window.assetStudioCustomGradient.active) {
+          let grad = ctx.createLinearGradient(0, 0, 48, 48);
+          grad.addColorStop(0, window.assetStudioCustomGradient.c1);
+          grad.addColorStop(1, window.assetStudioCustomGradient.c2);
+          ctx.fillStyle = grad;
+        } else {
+          values.backColor.setAlpha(1);
+          ctx.fillStyle = values.backColor.toRgbString();
+        }
         if (density == 'web') {
           if (values.backgroundShape == 'none') {
             ctx.fillStyle = 'white';

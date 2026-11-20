@@ -9,6 +9,6 @@ destination: /icons-launcher.html
 {% block body %}
 {{ super() }}
 <script>
-new pages.LauncherIconGenerator();
+window.assetStudioCurrentGenerator = new pages.LauncherIconGenerator();
 </script>
 {% endblock %}
