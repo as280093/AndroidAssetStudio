@@ -59,7 +59,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "app.js",
-    "revision": "b7330c66fc11795d5744dc3d11bbfe2b"
+    "revision": "1511fa17352d2708b104d981bcad08e4"
   },
   {
     "url": "bg-color-suggester.js",
@@ -79,7 +79,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "vendor.js",
-    "revision": "2179920b70534cc9127622a607dbc7ce"
+    "revision": "8c2dc3e53deaef91fefd6c71b67432e8"
   },
   {
     "url": "app.css",
