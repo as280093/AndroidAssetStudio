@@ -28,6 +28,22 @@ $formFieldSpacing: 24px;
   box-shadow: material-shadow(2);
   padding: 24px 0;
   z-index: 2;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    &:hover {
+      background: rgba(0, 0, 0, 0.35);
+    }
+  }
 
   .form-field-outer {
     padding: 0 24px;
@@ -324,19 +340,43 @@ $formFieldSpacing: 24px;
     }
   }
 
-  .form-image-drop-hint {
+  .form-image-quick-samples {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-size: 11px;
-    color: $colorBlackTertiary;
-    user-select: none;
+
+    .sample-label {
+      color: $colorBlackTertiary;
+    }
+
+    .sample-chip {
+      color: $colorPrimary;
+      background: rgba($colorPrimary, 0.08);
+      padding: 2px 6px;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color .15s ease;
+
+      &:hover {
+        background-color: rgba($colorPrimary, 0.16);
+      }
+    }
   }
 }
 
 .form-image-results-container {
   height: 220px;
   overflow-y: scroll;
+  overscroll-behavior: contain;
   box-sizing: border-box;
   background-color: #fafafa;
   position: relative;
+
+  &.is-hidden {
+    display: none !important;
+  }
   --thumb-bg: #fff;
   --thumb-pattern: linear-gradient(45deg, #eee 25%, transparent 25%),
                    linear-gradient(-45deg, #eee 25%, transparent 25%),
@@ -526,6 +566,10 @@ $formFieldSpacing: 24px;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+
+  &.is-hidden {
+    display: none !important;
+  }
 }
 
 .form-image-bg-selector {
@@ -1270,6 +1314,10 @@ body.dark-theme .bg-site-color-hex {
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   min-height: 32px;
+
+  &.is-hidden {
+    display: none !important;
+  }
 }
 
 .bg-suggest-info-swatch {

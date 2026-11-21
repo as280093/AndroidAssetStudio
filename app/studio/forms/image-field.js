@@ -165,13 +165,25 @@ export class ImageField extends Field {
         .click(() => this.fileEl_.trigger('click'))
         .appendTo(actionToolbarEl);
 
-    $('<span>')
-        .addClass('form-image-drop-hint')
-        .text('or drop file here')
+    let quickSamplesEl = $('<div>')
+        .addClass('form-image-quick-samples')
+        .html(`
+          <span class="sample-label">Try:</span>
+          <span class="sample-chip" data-domain="google.com">google.com</span>
+          <span class="sample-chip" data-domain="github.com">github.com</span>
+          <span class="sample-chip" data-domain="spotify.com">spotify.com</span>
+          <span class="sample-chip" data-domain="apple.com">apple.com</span>
+        `)
         .appendTo(actionToolbarEl);
 
+    quickSamplesEl.find('.sample-chip').click(ev => {
+      let domain = $(ev.currentTarget).data('domain');
+      urlInputEl.val(domain);
+      this.fetchImagesFromUrl_(domain);
+    });
+
     this.imageResultsContainerEl_ = $('<div>')
-        .addClass('form-image-results-container cancel-parent-scroll')
+        .addClass('form-image-results-container cancel-parent-scroll is-hidden')
         .appendTo(imageParamsEl);
 
     this.imageGridEl_ = $('<div>')
@@ -182,8 +194,8 @@ export class ImageField extends Field {
         .addClass('form-image-state-message')
         .appendTo(this.imageResultsContainerEl_);
 
-    let footerEl = $('<div>')
-        .addClass('form-image-footer')
+    this.imageFooterEl_ = $('<div>')
+        .addClass('form-image-footer is-hidden')
         .appendTo(imageParamsEl);
 
     let bgSelectorEl = $('<div>')
@@ -202,12 +214,12 @@ export class ImageField extends Field {
             </label>
           </div>
         `)
-        .appendTo(footerEl);
+        .appendTo(this.imageFooterEl_);
 
     $('<div>')
         .addClass('form-image-footer-meta')
         .html('<span>Sorted by highest quality</span>')
-        .appendTo(footerEl);
+        .appendTo(this.imageFooterEl_);
 
     let setBackdrop = (bgValue, isCustom) => {
       bgSelectorEl.find('.bg-swatch').removeClass('is-active');
@@ -506,6 +518,8 @@ export class ImageField extends Field {
   }
 
   renderImageLoadingState_(hostname) {
+    if (this.imageResultsContainerEl_) this.imageResultsContainerEl_.removeClass('is-hidden');
+    if (this.imageFooterEl_) this.imageFooterEl_.removeClass('is-hidden');
     if (!this.imageGridEl_ || !this.imageStateEl_) return;
     this.imageGridEl_.empty().hide();
     this.imageStateEl_.empty().show().html(`
@@ -516,6 +530,8 @@ export class ImageField extends Field {
   }
 
   renderImageErrorState_(msg) {
+    if (this.imageResultsContainerEl_) this.imageResultsContainerEl_.removeClass('is-hidden');
+    if (this.imageFooterEl_) this.imageFooterEl_.removeClass('is-hidden');
     if (!this.imageGridEl_ || !this.imageStateEl_) return;
     this.imageGridEl_.empty().hide();
     this.imageStateEl_.empty().show().html(`
@@ -526,6 +542,8 @@ export class ImageField extends Field {
   }
 
   renderImageGrid_(images) {
+    if (this.imageResultsContainerEl_) this.imageResultsContainerEl_.removeClass('is-hidden');
+    if (this.imageFooterEl_) this.imageFooterEl_.removeClass('is-hidden');
     if (!this.imageGridEl_ || !this.imageStateEl_) return;
     this.imageStateEl_.hide();
     this.imageGridEl_.empty().show();
@@ -1536,11 +1554,19 @@ ImageField.computeQualityScore = function(w, h, isSvg) {
   return pixels * squareBonus;
 };
 
-// Prevent scrolling for clipart per http://stackoverflow.com/questions/7600454
+// Prevent outer page scrolling while scrolling inside scrollable lists, without trapping mousewheel
 $(document).ready(() => {
-  $('.cancel-parent-scroll').on('mousewheel DOMMouseScroll', e => {
-    let delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
-    e.currentTarget.scrollTop -= delta;
-    e.preventDefault();
+  $(document).on('wheel mousewheel DOMMouseScroll', '.cancel-parent-scroll', function(e) {
+    let el = this;
+    let orig = e.originalEvent;
+    let delta = orig.wheelDelta ? orig.wheelDelta : (orig.deltaY ? -orig.deltaY : -orig.detail);
+    if (!delta) return;
+    let up = delta > 0;
+    let canScrollUp = el.scrollTop > 0;
+    let canScrollDown = el.scrollTop + el.clientHeight < el.scrollHeight - 1;
+    if ((up && canScrollUp) || (!up && canScrollDown)) {
+      el.scrollTop -= delta;
+      e.preventDefault();
+    }
   });
 });

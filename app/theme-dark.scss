@@ -91,6 +91,14 @@ html[data-theme="dark"] {
     background-color: #1e1e1e;
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.4);
     border-right: 1px solid rgba(255, 255, 255, 0.08);
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      &:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
   }
 
   .form-field-outer {
@@ -258,8 +266,19 @@ html[data-theme="dark"] {
       }
     }
 
-    .form-image-drop-hint {
-      color: rgba(255, 255, 255, 0.38);
+    .form-image-quick-samples {
+      .sample-label {
+        color: rgba(255, 255, 255, 0.54);
+      }
+
+      .sample-chip {
+        color: #90caf9;
+        background-color: rgba(144, 202, 249, 0.12);
+
+        &:hover {
+          background-color: rgba(144, 202, 249, 0.22);
+        }
+      }
     }
   }
 
@@ -1102,7 +1121,7 @@ body.dark-theme .bg-suggest-info-sub {
    ========================================================================== */
 
 .bg-suggest-info-bar {
-  display: flex !important;
+  display: flex;
   align-items: center !important;
   gap: 10px !important;
   padding: 8px 12px !important;
@@ -1111,6 +1130,10 @@ body.dark-theme .bg-suggest-info-sub {
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   box-sizing: border-box !important;
   min-height: 46px !important;
+
+  &.is-hidden {
+    display: none !important;
+  }
 }
 
 .bg-suggest-info-swatch {

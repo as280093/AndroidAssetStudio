@@ -396,7 +396,7 @@
 
     // Informative Detail Bar (Inspector)
     this.infoBarEl = document.createElement('div');
-    this.infoBarEl.className = 'bg-suggest-info-bar';
+    this.infoBarEl.className = 'bg-suggest-info-bar is-hidden';
     this.infoBarEl.innerHTML = [
       '<div class="bg-suggest-info-swatch"></div>',
       '<div class="bg-suggest-info-content">',
@@ -441,10 +441,12 @@
     var descEl = this.infoBarEl.querySelector('.bg-suggest-info-desc');
 
     if (!item) {
+      this.infoBarEl.classList.add('is-hidden');
       this.infoBarEl.style.display = 'none';
       return;
     }
 
+    this.infoBarEl.classList.remove('is-hidden');
     this.infoBarEl.style.display = 'flex';
     if (item.isGradient) {
       swatchEl.style.background = item.gradient.css;
@@ -568,6 +570,8 @@
       btn.addEventListener('mouseleave', function() {
         if (self.activeItem) {
           self.updateInfoBar(self.activeItem);
+        } else {
+          self.updateInfoBar(null);
         }
       });
 

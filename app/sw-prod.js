@@ -1,5 +1,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.3.1/workbox-sw.js");
 
+self.addEventListener('install', () => {
+  self.skipWaiting();
+});
+
+workbox.clientsClaim();
 workbox.precaching.precacheAndRoute([]);
 
 workbox.routing.registerRoute(
