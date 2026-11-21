@@ -8,31 +8,31 @@ workbox.clientsClaim();
 workbox.precaching.precacheAndRoute([
   {
     "url": "icons-actionbar.html",
-    "revision": "bccc76ad029abcf73e57dc4cb99b3c05"
+    "revision": "7109f7ae15f110afaeb354ba5dff84ea"
   },
   {
     "url": "icons-app-shortcut.html",
-    "revision": "a35a711c35e25bb4707ba1c2df987245"
+    "revision": "12234117526826296f3dd4dec8a00e8c"
   },
   {
     "url": "icons-generic.html",
-    "revision": "36db0724844ef0429104a30c3253b415"
+    "revision": "fa5788da2b3326f87a7f2ea5fc69eda5"
   },
   {
     "url": "icons-launcher.html",
-    "revision": "66d5f171853dcc3c54face1a0bc6312e"
+    "revision": "af34c8dfc1f13fff8d166c47d8b353b1"
   },
   {
     "url": "icons-notification.html",
-    "revision": "e37894ebfc817a906fdf123ce461aa90"
+    "revision": "c71335bf004e5daca9a4c2c39783cc6c"
   },
   {
     "url": "index.html",
-    "revision": "76766452da70bd58cfa9e5271094c75c"
+    "revision": "8df485c2b855e275d3c0eae7e0b34daa"
   },
   {
     "url": "nine-patches.html",
-    "revision": "da4459154589a7999869ac4b21383e16"
+    "revision": "5f9f80a2669120d29221d2c67170f494"
   },
   {
     "url": "res/generator-thumbs/icon-animator.svg",
@@ -64,7 +64,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "app.js",
-    "revision": "5b12cb0bb0eacc1fe3f02bd880f0539f"
+    "revision": "1ef3ed1282c9b5d09217937e6ae193dc"
   },
   {
     "url": "bg-color-suggester.js",
@@ -88,7 +88,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "app.css",
-    "revision": "d90674887ea0701ef15778f333fc2229"
+    "revision": "6f626d9963af9696efee3d3b73ad6c67"
   }
 ]);
 
