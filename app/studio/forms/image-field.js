@@ -165,25 +165,16 @@ export class ImageField extends Field {
         .click(() => this.fileEl_.trigger('click'))
         .appendTo(actionToolbarEl);
 
-    let quickSamplesEl = $('<div>')
-        .addClass('form-image-quick-samples')
-        .html(`
-          <span class="sample-label">Try:</span>
-          <span class="sample-chip" data-domain="google.com">google.com</span>
-          <span class="sample-chip" data-domain="github.com">github.com</span>
-          <span class="sample-chip" data-domain="spotify.com">spotify.com</span>
-          <span class="sample-chip" data-domain="apple.com">apple.com</span>
-        `)
+    $('<span>')
+        .addClass('form-image-drop-hint')
+        .text('or drop file here')
         .appendTo(actionToolbarEl);
 
-    quickSamplesEl.find('.sample-chip').click(ev => {
-      let domain = $(ev.currentTarget).data('domain');
-      urlInputEl.val(domain);
-      this.fetchImagesFromUrl_(domain);
-    });
+    this.setupDropTarget_(imageParamsEl);
+    this.setupDropTarget_(actionToolbarEl);
 
     this.imageResultsContainerEl_ = $('<div>')
-        .addClass('form-image-results-container cancel-parent-scroll is-hidden')
+        .addClass('form-image-results-container cancel-parent-scroll')
         .appendTo(imageParamsEl);
 
     this.imageGridEl_ = $('<div>')
@@ -195,7 +186,7 @@ export class ImageField extends Field {
         .appendTo(this.imageResultsContainerEl_);
 
     this.imageFooterEl_ = $('<div>')
-        .addClass('form-image-footer is-hidden')
+        .addClass('form-image-footer')
         .appendTo(imageParamsEl);
 
     let bgSelectorEl = $('<div>')
@@ -494,6 +485,8 @@ export class ImageField extends Field {
   }
 
   renderImageInitialState_(urlInputEl) {
+    if (this.imageResultsContainerEl_) this.imageResultsContainerEl_.removeClass('is-hidden');
+    if (this.imageFooterEl_) this.imageFooterEl_.removeClass('is-hidden');
     if (!this.imageGridEl_ || !this.imageStateEl_) return;
     this.imageGridEl_.empty().hide();
     this.imageStateEl_.empty().show().html(`

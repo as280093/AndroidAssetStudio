@@ -340,34 +340,15 @@ $formFieldSpacing: 24px;
     }
   }
 
-  .form-image-quick-samples {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+  .form-image-drop-hint {
     font-size: 11px;
-
-    .sample-label {
-      color: $colorBlackTertiary;
-    }
-
-    .sample-chip {
-      color: $colorPrimary;
-      background: rgba($colorPrimary, 0.08);
-      padding: 2px 6px;
-      border-radius: 10px;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color .15s ease;
-
-      &:hover {
-        background-color: rgba($colorPrimary, 0.16);
-      }
-    }
+    color: $colorBlackTertiary;
+    user-select: none;
   }
 }
 
 .form-image-results-container {
-  height: 220px;
+  height: 290px;
   overflow-y: scroll;
   overscroll-behavior: contain;
   box-sizing: border-box;
@@ -1328,29 +1309,47 @@ body.dark-theme .bg-site-color-hex {
   flex-shrink: 0;
 }
 
-.bg-suggest-info-text {
+.bg-suggest-info-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  flex: 1;
+  gap: 2px;
+}
+
+.bg-suggest-info-row-top {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 8px;
+  min-width: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  flex: 1;
 }
 
 .bg-suggest-info-title {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   color: #0f172a;
   line-height: 16px;
+  white-space: nowrap;
 }
 
-.bg-suggest-info-sub {
+.bg-suggest-info-code {
   font-size: 11px;
   font-family: monospace;
   color: #64748b;
   line-height: 16px;
+  white-space: nowrap;
+}
+
+.bg-suggest-info-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 14px;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 

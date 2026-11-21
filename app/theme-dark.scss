@@ -266,19 +266,10 @@ html[data-theme="dark"] {
       }
     }
 
-    .form-image-quick-samples {
-      .sample-label {
-        color: rgba(255, 255, 255, 0.54);
-      }
-
-      .sample-chip {
-        color: #90caf9;
-        background-color: rgba(144, 202, 249, 0.12);
-
-        &:hover {
-          background-color: rgba(144, 202, 249, 0.22);
-        }
-      }
+    .form-image-drop-hint {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 11px;
+      user-select: none;
     }
   }
 
