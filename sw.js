@@ -1,33 +1,38 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.3.1/workbox-sw.js");
 
+self.addEventListener('install', () => {
+  self.skipWaiting();
+});
+
+workbox.clientsClaim();
 workbox.precaching.precacheAndRoute([
   {
     "url": "icons-actionbar.html",
-    "revision": "fad4a1281dcb80a16ab8f67146c19e97"
+    "revision": "bccc76ad029abcf73e57dc4cb99b3c05"
   },
   {
     "url": "icons-app-shortcut.html",
-    "revision": "19b506ca14125b496889e76f62bc6e59"
+    "revision": "a35a711c35e25bb4707ba1c2df987245"
   },
   {
     "url": "icons-generic.html",
-    "revision": "b5dacad3b34788e90cf10d476f502796"
+    "revision": "36db0724844ef0429104a30c3253b415"
   },
   {
     "url": "icons-launcher.html",
-    "revision": "040bbd04bc17adfdef9c3d4f85e7faa1"
+    "revision": "66d5f171853dcc3c54face1a0bc6312e"
   },
   {
     "url": "icons-notification.html",
-    "revision": "11ef81162f7f76be2e81a71dd1e421df"
+    "revision": "e37894ebfc817a906fdf123ce461aa90"
   },
   {
     "url": "index.html",
-    "revision": "3c25a830a98305cebc42ce0f5a5d2c38"
+    "revision": "76766452da70bd58cfa9e5271094c75c"
   },
   {
     "url": "nine-patches.html",
-    "revision": "94fe38d60615c3c9a91bce3fcdd39562"
+    "revision": "da4459154589a7999869ac4b21383e16"
   },
   {
     "url": "res/generator-thumbs/icon-animator.svg",
@@ -59,11 +64,11 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "app.js",
-    "revision": "1511fa17352d2708b104d981bcad08e4"
+    "revision": "5b12cb0bb0eacc1fe3f02bd880f0539f"
   },
   {
     "url": "bg-color-suggester.js",
-    "revision": "ee15e0bb3b4e912fce76cf48b72da8cd"
+    "revision": "cbc58593b367dfb4e090f6c42f79e49d"
   },
   {
     "url": "image-url-picker.js",
@@ -83,7 +88,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "app.css",
-    "revision": "f8e938b151313228fa330c35fbaa3941"
+    "revision": "d90674887ea0701ef15778f333fc2229"
   }
 ]);
 
